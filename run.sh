@@ -14,4 +14,16 @@ case "$1" in
     run_reporter)
         docker run --rm -v $(pwd)/data:/data reporter-image
         ;;
+    structure)
+        find . -type f
+        ;;
+    clear_data)
+        rm -f data/*.csv data/*.html
+        ;;
+    inside_generator)
+        docker run --rm -v $(pwd)/data:/data generator-image ls -la /data
+        ;;
+    inside_reporter)
+        docker run --rm -v $(pwd)/data:/data reporter-image ls -la /data
+        ;;
 esac
